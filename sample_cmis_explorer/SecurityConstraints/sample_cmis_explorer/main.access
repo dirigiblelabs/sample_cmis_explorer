@@ -1,0 +1,10 @@
+[
+  {
+    "location":"/sample_cmis_explorer",
+    "roles":
+      [
+        {"role":"Operator"}
+      ]
+  }
+]
+
