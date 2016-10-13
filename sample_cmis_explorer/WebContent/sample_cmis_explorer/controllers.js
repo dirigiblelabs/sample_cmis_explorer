@@ -1,10 +1,10 @@
-'use strict';
+/*globals angular, $ */
 angular
 .module('app', ['angularFileUpload'])
 .controller('DocServiceCtrl', ['$scope', '$http', 'FileUploader', function($scope, $http, FileUploader) {
-	var folderUrl = '../../js-secured/ext_registry_cmis_explorer/folder.js';
+	var folderUrl = '../../js-secured/sample_cmis_explorer/folder.js';
 	$scope.paths = [];
-	$scope.docsUrl = '../../js-secured/ext_registry_cmis_explorer/document.js';
+	$scope.docsUrl = '../../js-secured/sample_cmis_explorer/document.js';
 	
 	function getFolder(folderId){
 		var requestUrl = folderUrl;
@@ -82,7 +82,10 @@ angular
 	
 	$scope.enterDeleteSession = function(){
 		$scope.inDeleteSession = true; 
-		$scope.selectedCheckboxes = [];
+	};
+	
+	$scope.exitDeleteSession = function(){
+		$scope.inDeleteSession = false;
 	};
 	
 	$scope.deleteItems = function(){
