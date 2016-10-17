@@ -2,7 +2,6 @@
 /* eslint-env node, dirigible */
 
 var cmis = require('doc/cmis');
-var streams = require('io/streams');
 var response = require("net/http/response");
 
 var cmisSession = cmis.getSession();
@@ -42,7 +41,7 @@ exports.uploadDocument = function(folderId, document){
 	var fileName = document.name;
 	var mimetype = document.contentType;
 	var size = document.size;
-	var inputStream = new streams.InputStream(document.internalStream);
+	var inputStream = document.getInputStream();
 	var contentStream = cmisSession.getObjectFactory().createContentStream(fileName, size, mimetype, inputStream);
 	var properties = {};
 	properties[cmis.OBJECT_TYPE_ID] = cmis.OBJECT_TYPE_DOCUMENT;
