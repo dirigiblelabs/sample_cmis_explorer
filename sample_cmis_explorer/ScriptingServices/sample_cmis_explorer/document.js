@@ -46,7 +46,7 @@ function executeMethod(method){
 function handlePost(){
 	if (upload.isMultipartContent()) {
 		var folderId = request.getParameter('id');
-		var documents = upload.parseRequest();
+		var documents = upload.parseRequest(true);
 		var result = [];
 		documents.forEach(function(document) {
 			result.push(documentLib.uploadDocument(folderId, document));
@@ -60,14 +60,14 @@ function handlePost(){
 
 function handleGet(){
 	
-	var documentId = request.getParameter('id');
+ 	var documentId = request.getParameter('id');
 	if (!documentId){
 		printError(response.BAD_REQUEST, 4, "Query parameter 'id' must be provided.");
 		return;
 	}
 	
 	var preview = request.getParameter('preview');
-	if (preview){
+	if (preview !== null){
 		documentLib.previewDocument(documentId);
 	} else {
 		documentLib.downloadDocument(documentId);

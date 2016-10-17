@@ -11,5 +11,5 @@ exports.deleteObject = function(objectId){
 
 exports.renameObject = function(objectId, newName){
 	var object = cmisSession.getObject(objectId);
-	object.getInternalObject().rename(newName);
+	object.rename(newName);
 };
