@@ -2,7 +2,6 @@
 /* eslint-env node, dirigible */
 
 var cmis = require('doc/cmis');
-var response = require("net/http/response");
 
 var cmisSession = cmis.getSession();
 
@@ -33,7 +32,7 @@ function FolderSerializer(cmisFolder){
 
 exports.getFolder = function(folderId){
 	var folder;
-	if (folderId === null){
+	if (!folderId){
 		folder = cmisSession.getRootFolder();
 	} else {
 		folder = cmisSession.getObject(folderId);
@@ -44,7 +43,7 @@ exports.getFolder = function(folderId){
 
 exports.createFolder = function(parentFolderId, name){
 	var parentFolder;
-	if (parentFolderId == null){
+	if (!parentFolderId){
 		parentFolder = cmisSession.getRootFolder();
 	} else{
 		parentFolder = cmisSession.getObject(parentFolderId);

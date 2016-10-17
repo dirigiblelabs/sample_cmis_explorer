@@ -130,7 +130,7 @@ angular
 	
 	$scope.handleRenameButton = function($event, item){
 		$event.stopPropagation();
-		$scope.itemToDelete = item;
+		$scope.itemToRename = item;
 		$('#renameModal').modal('show');
 	};
 	

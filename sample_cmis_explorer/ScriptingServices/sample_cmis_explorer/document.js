@@ -1,7 +1,7 @@
 /* globals $ */
 /* eslint-env node, dirigible */
-var documentLib = require("ext_registry_cmis_explorer/document_lib");
-var cmisObjectLib = require("ext_registry_cmis_explorer/cmis_object_lib");
+var documentLib = require("sample_cmis_explorer/document_lib");
+var cmisObjectLib = require("sample_cmis_explorer/cmis_object_lib");
 var request = require("net/http/request");
 var response = require("net/http/response");
 var upload = require('net/http/upload');
@@ -59,13 +59,13 @@ function handlePost(){
 function handleGet(){
 	
 	var documentId = request.getParameter('id');
-	if (documentId === null){
+	if (!documentId){
 		printError(response.BAD_REQUEST, 4, "Query parameter 'id' must be provided.");
 		return;
 	}
 	
 	var preview = request.getParameter('preview');
-	if (preview !== null){
+	if (preview){
 		documentLib.previewDocument(documentId);
 	} else {
 		documentLib.downloadDocument(documentId);
@@ -74,7 +74,7 @@ function handleGet(){
 
 function handlePut(){
 	var body = getJsonRequestBody();
-	if (body.id == null || body.name == null){
+	if (!body.id || !body.name){
 		printError(response.BAD_REQUEST, 4, "Request body must contain 'id' and 'name'");
 		return;
 	}
@@ -104,7 +104,7 @@ function printError(httpCode, errCode, errMessage, errContext) {
     response.setHeader("Content-Type", "application/json");
     response.print(JSON.stringify(body));
     console.error(JSON.stringify(body));
-    if (errContext !== null) {
+    if (errContext) {
     	console.error(JSON.stringify(errContext));
     }
 };

@@ -1,8 +1,8 @@
 /* globals $ */
 /* eslint-env node, dirigible */
 
-var folderLib = require("ext_registry_cmis_explorer/folder_lib");
-var cmisObjectLib = require("ext_registry_cmis_explorer/cmis_object_lib");
+var folderLib = require("sample_cmis_explorer/folder_lib");
+var cmisObjectLib = require("sample_cmis_explorer/cmis_object_lib");
 
 var request = require("net/http/request");
 var response = require("net/http/response");

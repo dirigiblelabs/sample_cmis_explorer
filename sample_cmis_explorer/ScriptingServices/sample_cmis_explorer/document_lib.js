@@ -33,7 +33,7 @@ exports.previewDocument = function(documentId){
 
 exports.uploadDocument = function(folderId, document){
 	var folder;
-	if (folderId !== null){
+	if (folderId){
 		folder = cmisSession.getObject(folderId);
 	} else {
 		folder = cmisSession.getRootFolder();
